@@ -1,0 +1,7 @@
+dependencies {
+  testImplementation 'org.scala-native:junit-runtime_native0.5_3:0.5.7'
+}
+
+link {
+  mainClass = 'example.Main'
+}

@@ -1,0 +1,25 @@
+plugins {
+  id 'org.podval.tools.scalajs' version '0.8.0'
+}
+
+final String scalaVersion = '3.7.0'
+
+scala.scalaVersion = scalaVersion
+
+dependencies {
+  implementation project(':core:example-core-js')
+}
+
+tasks.register('sourcesJar', Jar) {
+  from sourceSets.main.allSource
+  archiveClassifier.set('sources')
+}
+
+link {
+  moduleInitializers {
+    main {
+      className = 'example.MoreMain'
+      mainMethodHasArgs = true
+    }
+  }
+}

@@ -1,0 +1,5 @@
+plugins {
+  id 'org.podval.tools.scalajs' version '0.8.0'
+}
+
+scala.scalaVersion = '3.7.0'

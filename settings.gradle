@@ -1,0 +1,25 @@
+pluginManagement {
+  repositories {
+    mavenLocal()
+    mavenCentral()
+    gradlePluginPortal()
+  }
+}
+
+dependencyResolutionManagement {
+  repositories {
+    mavenLocal()
+    mavenCentral()
+  }
+}
+
+rootProject.name = 'crosscompile'
+
+include 'core'
+apply from: 'core/settings-includes.gradle'
+apply from: 'core/settings-names.gradle'
+
+include 'more'
+project(':more').name = 'example-more'
+
+//includeBuild '/home/dub/Projects/scalajs/scalajs-gradle'

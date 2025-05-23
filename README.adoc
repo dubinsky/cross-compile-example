@@ -1,0 +1,11 @@
+= Gradle Scala Cross-Compile Example
+
+This is an example of how to cross-compile Scala code to
+https://www.scala-js.org/[Scala.js],
+https://scala-native.org/[Scala Native] and Scala on JVM
+with https://gradle.org/[Gradle]
+using https://github.com/dubinsky/scalajs-gradle[Gradle Plugin].
+
+Inspired by
+https://github.com/scala-js/scalajs-cross-compile-example[scalajs-cross-compile-example] from https://github.com/scala-js[Scala.js].
+

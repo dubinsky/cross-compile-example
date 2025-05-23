@@ -1,0 +1,12 @@
+dependencies {
+  testImplementation 'org.scala-js:scalajs-junit-test-runtime_2.13:1.19.0'
+}
+
+link {
+  moduleInitializers {
+    main {
+      className = 'example.Main'
+      mainMethodHasArgs = true
+    }
+  }
+}
