@@ -1,5 +1,26 @@
+import org.podval.tools.scalajsplugin.ScalaBackendExtension
+final ScalaBackendExtension scalaVersion = scalaBackend
+
+final String scalaJsVersion = '1.19.0'
+
 dependencies {
-  testImplementation 'org.scala-js:scalajs-junit-test-runtime_2.13:1.19.0'
+  implementation  "org.scala-js:scalajs-library_${scalaVersion.binary2}:$scalaJsVersion"
+  implementation  "org.scala-js:scalajs-dom_sjs1_${scalaVersion.binary}:2.8.0"
+  if (scalaVersion.scala3) {
+    implementation "org.scala-lang:scala3-library_sjs1_${scalaVersion.binary}:${scalaVersion.version}"
+  }
+  scalajs         "org.scala-js:scalajs-linker_${scalaVersion.binary2}:$scalaJsVersion"
+  scalajs         "org.scala-js:scalajs-sbt-test-adapter_${scalaVersion.binary2}:$scalaJsVersion"
+  scalajs         "org.scala-js:scalajs-env-jsdom-nodejs_${scalaVersion.binary2}:1.1.0"
+  if (!scalaVersion.scala3) {
+    scalaCompilerPlugins "org.scala-js:scalajs-compiler_${scalaVersion.version}:$scalaJsVersion"
+  }
+  if (!scalaVersion.scala3) {
+    testScalaCompilerPlugins "org.scala-js:scalajs-junit-test-plugin_${scalaVersion.version}:$scalaJsVersion"
+  }
+  testRuntimeOnly "org.scala-js:scalajs-test-bridge_${scalaVersion.binary2}:$scalaJsVersion"
+
+  testImplementation "org.scala-js:scalajs-junit-test-runtime_${scalaVersion.binary2}:$scalaJsVersion"
 }
 
 link {
