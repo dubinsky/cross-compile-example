@@ -2,7 +2,12 @@ plugins {
   id 'application'
 }
 
+// plugin does this automatically
+scala.scalaVersion = scalaVersion
+
 dependencies {
+  testRuntimeOnly 'org.scala-sbt:test-interface:1.0'
+
   testImplementation 'com.github.sbt:junit-interface:0.13.3'
 }
 
