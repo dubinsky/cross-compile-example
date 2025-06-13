@@ -1,7 +1,7 @@
 // plugin does this automatically
 scala.scalaVersion = scalaVersion
 
-import org.podval.tools.scalaplugin.BackendExtension
+import org.podval.tools.backendplugin.BackendExtension
 final BackendExtension backend = scalaBackend
 
 dependencies {
