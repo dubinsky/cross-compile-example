@@ -4,8 +4,6 @@ hs_err_pid*
 .gradle
 .idea
 build
-gradle
-gradlew
 node_modules
 package.json
 package-lock.json

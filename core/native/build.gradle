@@ -5,6 +5,7 @@ import org.podval.tools.backendplugin.BackendExtension
 final BackendExtension backend = scalaBackend
 
 dependencies {
+  testImplementation "dev.zio:zio-test-sbt_native0.5_${backend.scalaBinaryVersion}:2.1.19"
   testImplementation "org.scala-native:junit-runtime_native0.5_${backend.scalaBinaryVersion}:${backend.backendVersion}"
 
   // dependencies plugin adds automatically

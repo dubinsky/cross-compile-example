@@ -26,6 +26,8 @@ dependencies {
 }
 
 link {
+  experimentalUseWebAssembly = true
+  moduleKind = 'ESModule'
   moduleInitializers {
     main {
       className = 'example.Main'
