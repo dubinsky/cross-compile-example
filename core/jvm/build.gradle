@@ -5,10 +5,19 @@ plugins {
 // plugin does this automatically
 scala.scalaVersion = scalaVersion
 
-dependencies {
-  testRuntimeOnly 'org.scala-sbt:test-interface:1.0'
+import org.podval.tools.test.framework.*
 
-  testImplementation 'com.github.sbt:junit-interface:0.13.3'
+dependencies {
+  testImplementation scalaBackend.testFramework(JUnit4    , '0.13.3')
+  testImplementation scalaBackend.testFramework(MUnit     )
+  testImplementation scalaBackend.testFramework(ScalaCheck)
+  testImplementation scalaBackend.testFramework(ScalaTest )
+  testImplementation scalaBackend.testFramework(Specs2    )
+  testImplementation scalaBackend.testFramework(UTest     )
+  testImplementation scalaBackend.testFramework(ZioTest   )
+
+  // plugin does this automatically
+  testRuntimeOnly 'org.scala-sbt:test-interface:1.0'
 }
 
 run {

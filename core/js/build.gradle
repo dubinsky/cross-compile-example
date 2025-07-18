@@ -1,28 +1,32 @@
 // plugin does this automatically
 scala.scalaVersion = scalaVersion
 
-import org.podval.tools.backend.BackendExtension
-final BackendExtension backend = scalaBackend
+import org.podval.tools.test.framework.*
 
 dependencies {
-  testImplementation "org.scala-js:scalajs-junit-test-runtime_${backend.scala2BinaryVersion}:${backend.backendVersion}"
+  testImplementation scalaBackend.testFramework(JUnit4ScalaJS, "${scalaBackend.backendVersion}")
+  testImplementation scalaBackend.testFramework(MUnit        )
+  testImplementation scalaBackend.testFramework(ScalaCheck   )
+  testImplementation scalaBackend.testFramework(ScalaTest    )
+  testImplementation scalaBackend.testFramework(Specs2       )
+  testImplementation scalaBackend.testFramework(UTest        )
 
   // dependencies plugin adds automatically
-  implementation  "org.scala-js:scalajs-library_${backend.scala2BinaryVersion}:1.19.0" // sets backend.backendVersion
-  implementation  "org.scala-js:scalajs-dom_sjs1_${backend.scalaBinaryVersion}:2.8.0"
-  if (backend.scala3) {
-    implementation "org.scala-lang:scala3-library_sjs1_${backend.scalaBinaryVersion}:${backend.scalaVersion}"
+  implementation  "org.scala-js:scalajs-library_${scalaBackend.scala2BinaryVersion}:1.19.0" // sets scalaBackend.backendVersion
+  implementation  "org.scala-js:scalajs-dom_sjs1_${scalaBackend.scalaBinaryVersion}:2.8.0"
+  if (scalaBackend.scala3) {
+    implementation "org.scala-lang:scala3-library_sjs1_${scalaBackend.scalaBinaryVersion}:${scalaBackend.scalaVersion}"
   }
-  scalajs         "org.scala-js:scalajs-linker_${backend.scala2BinaryVersion}:${backend.backendVersion}"
-  scalajs         "org.scala-js:scalajs-sbt-test-adapter_${backend.scala2BinaryVersion}:${backend.backendVersion}"
-  scalajs         "org.scala-js:scalajs-env-jsdom-nodejs_${backend.scala2BinaryVersion}:1.1.0"
-  if (!backend.scala3) {
-    scalaCompilerPlugins "org.scala-js:scalajs-compiler_${backend.scalaVersion}:${backend.backendVersion}"
+  scalajs         "org.scala-js:scalajs-linker_${scalaBackend.scala2BinaryVersion}:${scalaBackend.backendVersion}"
+  scalajs         "org.scala-js:scalajs-sbt-test-adapter_${scalaBackend.scala2BinaryVersion}:${scalaBackend.backendVersion}"
+  scalajs         "org.scala-js:scalajs-env-jsdom-nodejs_${scalaBackend.scala2BinaryVersion}:1.1.0"
+  if (!scalaBackend.scala3) {
+    scalaCompilerPlugins "org.scala-js:scalajs-compiler_${scalaBackend.scalaVersion}:${scalaBackend.backendVersion}"
   }
-  if (!backend.scala3 && backend.nonJvmJUnit4present) {
-    testScalaCompilerPlugins "org.scala-js:scalajs-junit-test-plugin_${backend.scalaVersion}:${backend.backendVersion}"
+  if (!scalaBackend.scala3 && scalaBackend.nonJvmJUnit4present) {
+    testScalaCompilerPlugins "org.scala-js:scalajs-junit-test-plugin_${scalaBackend.scalaVersion}:${scalaBackend.backendVersion}"
   }
-  testRuntimeOnly "org.scala-js:scalajs-test-bridge_${backend.scala2BinaryVersion}:${backend.backendVersion}"
+  testRuntimeOnly "org.scala-js:scalajs-test-bridge_${scalaBackend.scala2BinaryVersion}:${scalaBackend.backendVersion}"
 }
 
 link {
