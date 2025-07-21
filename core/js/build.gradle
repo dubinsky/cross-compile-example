@@ -10,6 +10,7 @@ dependencies {
   testImplementation scalaBackend.testFramework(ScalaTest    )
   testImplementation scalaBackend.testFramework(Specs2       )
   testImplementation scalaBackend.testFramework(UTest        )
+  testImplementation scalaBackend.testFramework(ZioTest   )
 
   // dependencies plugin adds automatically
   implementation  "org.scala-js:scalajs-library_${scalaBackend.scala2BinaryVersion}:1.19.0" // sets scalaBackend.backendVersion

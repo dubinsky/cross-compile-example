@@ -5,7 +5,7 @@ pluginManagement {
     gradlePluginPortal()
   }
   plugins {
-    id 'org.podval.tools.scalajs' version '0.9.2'
+    id 'org.podval.tools.scalajs' version '0.9.3'
   }
 }
 
