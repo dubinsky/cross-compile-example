@@ -33,6 +33,7 @@ dependencies {
 link {
   experimentalUseWebAssembly = true
   moduleKind = 'ESModule'
+//  esVersion = '2018'
   moduleInitializers {
     main {
       className = 'example.Main'
