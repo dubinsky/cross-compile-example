@@ -12,5 +12,7 @@ final class Specs2ScalaNativeTest extends Specification {
     square numbers properly $sq
   """
 
+  //TODO: does not work on Scala Native: output test output ${output()}
+  def output(): Unit = println(s"--- $getClass output")
   def sq: Result = SharedLibrary.instance.sq(1) must beEqualTo(1)
 }

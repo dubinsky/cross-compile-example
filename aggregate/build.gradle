@@ -1,0 +1,23 @@
+plugins {
+  id 'base'
+  id 'test-report-aggregation'
+}
+
+dependencies {
+  testReportAggregation project(':core:example-core-jvm')
+  testReportAggregation project(':core:example-core-js')
+  testReportAggregation project(':core:example-core-native')
+  testReportAggregation project(':example-more')
+}
+
+reporting {
+  reports {
+    testAggregateTestReport(AggregateTestReport) {
+      testSuiteName = "test"
+    }
+  }
+}
+
+tasks.named('check') {
+  dependsOn tasks.named('testAggregateTestReport', TestReport)
+}

@@ -1,8 +1,8 @@
 package example
 
-import org.scalacheck.Prop.forAll
-import org.scalacheck.Properties
+import org.scalacheck.{Prop, Properties}
 
 final class ScalaCheckScalaNativeTest extends Properties("SharedLibrary") {
-  property("sq") = forAll { (n: Int) => SharedLibrary.instance.sq(n) == n*n }
+  property("output") = Prop { println(s"--- $getClass output"); true }
+  property("sq") = Prop.forAll { (n: Int) => SharedLibrary.instance.sq(n) == n*n }
 }

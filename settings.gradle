@@ -25,4 +25,6 @@ apply from: 'core/settings-names.gradle'
 include 'more'
 project(':more').name = 'example-more'
 
+include 'aggregate'
+
 //includeBuild '/home/dub/Projects/scalajs/scalajs-gradle'
