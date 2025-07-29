@@ -1,4 +1,0 @@
-include ':core:shared'
-include ':core:jvm'
-include ':core:js'
-include ':core:native'

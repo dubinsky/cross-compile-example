@@ -4,36 +4,36 @@ scala.scalaVersion = scalaVersion
 import org.podval.tools.test.framework.*
 
 dependencies {
-  testImplementation scalaBackend.testFramework(JUnit4ScalaJS, "${scalaBackend.backendVersion}")
-  testImplementation scalaBackend.testFramework(MUnit        )
-  testImplementation scalaBackend.testFramework(ScalaCheck   )
-  testImplementation scalaBackend.testFramework(ScalaTest    )
-  testImplementation scalaBackend.testFramework(Specs2       )
-  testImplementation scalaBackend.testFramework(UTest        )
+  testImplementation scalaBackend.testFramework(JUnit4ScalaJS, scalaBackend.backendVersion)
+  testImplementation scalaBackend.testFramework(MUnit     )
+  testImplementation scalaBackend.testFramework(ScalaCheck)
+  testImplementation scalaBackend.testFramework(ScalaTest )
+  testImplementation scalaBackend.testFramework(Specs2    )
+  testImplementation scalaBackend.testFramework(UTest     )
   testImplementation scalaBackend.testFramework(ZioTest   )
 
   // dependencies plugin adds automatically
-  implementation  "org.scala-js:scalajs-library_${scalaBackend.scala2BinaryVersion}:1.19.0" // sets scalaBackend.backendVersion
-  implementation  "org.scala-js:scalajs-dom_sjs1_${scalaBackend.scalaBinaryVersion}:2.8.0"
+  implementation             scalaBackend.scala2JvmDependency   ('org.scala-js'  , 'scalajs-library'          , '1.19.0') // sets scalaBackend.backendVersion
+  implementation             scalaBackend.scalaDependency       ('org.scala-js'  , 'scalajs-dom'              , '2.8.1')
   if (scalaBackend.scala3) {
-    implementation "org.scala-lang:scala3-library_sjs1_${scalaBackend.scalaBinaryVersion}:${scalaBackend.scalaVersion}"
+    implementation           scalaBackend.scala3Dependency      ('org.scala-lang', 'scala3-library'           , scalaBackend.scalaVersion.toString())
   }
-  scalajs         "org.scala-js:scalajs-linker_${scalaBackend.scala2BinaryVersion}:${scalaBackend.backendVersion}"
-  scalajs         "org.scala-js:scalajs-sbt-test-adapter_${scalaBackend.scala2BinaryVersion}:${scalaBackend.backendVersion}"
-  scalajs         "org.scala-js:scalajs-env-jsdom-nodejs_${scalaBackend.scala2BinaryVersion}:1.1.0"
+  scalajs                    scalaBackend.pluginScala2Dependency('org.scala-js'  , 'scalajs-linker'           , scalaBackend.backendVersion)
+  scalajs                    scalaBackend.pluginScala2Dependency('org.scala-js'  , 'scalajs-sbt-test-adapter' , scalaBackend.backendVersion)
+  scalajs                    scalaBackend.pluginScala2Dependency('org.scala-js'  , 'scalajs-env-jsdom-nodejs' , '1.1.0')
   if (!scalaBackend.scala3) {
-    scalaCompilerPlugins "org.scala-js:scalajs-compiler_${scalaBackend.scalaVersion}:${scalaBackend.backendVersion}"
+    scalaCompilerPlugins     scalaBackend.scala2CompilerPlugin  ('org.scala-js'  , 'scalajs-compiler'         , scalaBackend.backendVersion)
   }
   if (!scalaBackend.scala3 && scalaBackend.nonJvmJUnit4present) {
-    testScalaCompilerPlugins "org.scala-js:scalajs-junit-test-plugin_${scalaBackend.scalaVersion}:${scalaBackend.backendVersion}"
+    testScalaCompilerPlugins scalaBackend.scala2CompilerPlugin  ('org.scala-js'  , 'scalajs-junit-test-plugin', scalaBackend.backendVersion)
   }
-  testRuntimeOnly "org.scala-js:scalajs-test-bridge_${scalaBackend.scala2BinaryVersion}:${scalaBackend.backendVersion}"
+  testRuntimeOnly            scalaBackend.scala2JvmDependency   ('org.scala-js'  , 'scalajs-test-bridge'      , scalaBackend.backendVersion)
 }
 
 link {
   experimentalUseWebAssembly = true
   moduleKind = 'ESModule'
-//  esVersion = '2018'
+  esVersion = '2018'
   moduleInitializers {
     main {
       className = 'example.Main'

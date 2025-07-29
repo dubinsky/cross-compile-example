@@ -5,7 +5,7 @@ pluginManagement {
     gradlePluginPortal()
   }
   plugins {
-    id 'org.podval.tools.scalajs' version '0.9.3'
+    id 'org.podval.tools.scalajs' version '0.9.4'
   }
 }
 
@@ -19,8 +19,13 @@ dependencyResolutionManagement {
 rootProject.name = 'crosscompile'
 
 include 'core'
-apply from: 'core/settings-includes.gradle'
-apply from: 'core/settings-names.gradle'
+include ':core:shared'
+include ':core:jvm'
+project(':core:jvm').name = 'example-core-jvm'
+include ':core:js'
+project(':core:js').name = 'example-core-js'
+include ':core:native'
+project(':core:native').name = 'example-core-native'
 
 include 'more'
 project(':more').name = 'example-more'

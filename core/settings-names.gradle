@@ -1,3 +1,0 @@
-project(':core:jvm').name = 'example-core-jvm'
-project(':core:js').name = 'example-core-js'
-project(':core:native').name = 'example-core-native'

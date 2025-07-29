@@ -1,6 +1,7 @@
 plugins {
   id 'base'
   id 'test-report-aggregation'
+  id 'com.gradleup.nmcp.aggregation' version '1.0.2'
 }
 
 dependencies {

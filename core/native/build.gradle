@@ -14,27 +14,27 @@ dependencies {
 
   // dependencies plugin adds automatically
   if (scalaBackend.scala3) {
-    implementation "org.scala-native:scala3lib_native0.5_${scalaBackend.scalaBinaryVersion}:${scalaBackend.scalaVersion}+0.5.8" // sets backend.backendVersion
+    implementation           scalaBackend.scala3Dependency     ('org.scala-native', 'scala3lib'     , "${scalaBackend.scalaVersion}+0.5.8") // sets scalaBackend.backendVersion
   } else {
-    implementation "org.scala-native:scalalib_native0.5_${scalaBackend.scalaBinaryVersion}:${scalaBackend.scalaVersion}+0.5.8" // sets backend.backendVersion
+    implementation           scalaBackend.scala2Dependency     ('org.scala-native', 'scalalib'      , "${scalaBackend.scalaVersion}+0.5.8") // sets scalaBackend.backendVersion
   }
-  implementation "org.scala-native:nativelib_native0.5_${scalaBackend.scalaBinaryVersion}:${scalaBackend.backendVersion}"
-  implementation "org.scala-native:clib_native0.5_${scalaBackend.scalaBinaryVersion}:${scalaBackend.backendVersion}"
-  implementation "org.scala-native:posixlib_native0.5_${scalaBackend.scalaBinaryVersion}:${scalaBackend.backendVersion}"
-  implementation "org.scala-native:javalib_native0.5_${scalaBackend.scalaBinaryVersion}:${scalaBackend.backendVersion}"
-  implementation "org.scala-native:windowslib_native0.5_${scalaBackend.scalaBinaryVersion}:${scalaBackend.backendVersion}"
-  implementation "org.scala-native:auxlib_native0.5_${scalaBackend.scalaBinaryVersion}:${scalaBackend.backendVersion}"
+  implementation             scalaBackend.scalaDependency      ('org.scala-native', 'nativelib'     , scalaBackend.backendVersion)
+  implementation             scalaBackend.scalaDependency      ('org.scala-native', 'clib'          , scalaBackend.backendVersion)
+  implementation             scalaBackend.scalaDependency      ('org.scala-native', 'posixlib'      , scalaBackend.backendVersion)
+  implementation             scalaBackend.scalaDependency      ('org.scala-native', 'javalib'       , scalaBackend.backendVersion)
+  implementation             scalaBackend.scalaDependency      ('org.scala-native', 'windowslib'    , scalaBackend.backendVersion)
+  implementation             scalaBackend.scalaDependency      ('org.scala-native', 'auxlib'        , scalaBackend.backendVersion)
 
-  scalanative "org.scala-native:tools_${scalaBackend.scalaBinaryVersion}:${scalaBackend.backendVersion}"
-  scalanative "org.scala-native:test-runner_${scalaBackend.scalaBinaryVersion}:${scalaBackend.backendVersion}"
+  scalanative                scalaBackend.pluginScalaDependency('org.scala-native', 'tools'         , scalaBackend.backendVersion)
+  scalanative                scalaBackend.pluginScalaDependency('org.scala-native', 'test-runner'   , scalaBackend.backendVersion)
 
-  scalaCompilerPlugins "org.scala-native:nscplugin_${scalaBackend.scalaVersion}:${scalaBackend.backendVersion}"
+  scalaCompilerPlugins       scalaBackend.scalaCompilerPlugin  ('org.scala-native', 'nscplugin'     , scalaBackend.backendVersion)
 
   if (scalaBackend.nonJvmJUnit4present) {
-    testScalaCompilerPlugins "org.scala-native:junit-plugin_${scalaBackend.scalaVersion}:${scalaBackend.backendVersion}"
+    testScalaCompilerPlugins scalaBackend.scalaCompilerPlugin  ('org.scala-native', 'junit-plugin'  , scalaBackend.backendVersion)
   }
 
-  testRuntimeOnly "org.scala-native:test-interface_native0.5_${scalaBackend.scalaBinaryVersion}:${scalaBackend.backendVersion}"
+  testRuntimeOnly            scalaBackend.scalaDependency      ('org.scala-native', 'test-interface', scalaBackend.backendVersion)
 }
 
 link {
