@@ -5,7 +5,7 @@ pluginManagement {
     gradlePluginPortal()
   }
   plugins {
-    id 'org.podval.tools.scalajs' version '0.9.4'
+    id 'org.podval.tools.scalajs' version '0.9.5'
   }
 }
 
@@ -20,6 +20,7 @@ rootProject.name = 'crosscompile'
 
 include 'core'
 include ':core:shared'
+include ':core:js-native'
 include ':core:jvm'
 project(':core:jvm').name = 'example-core-jvm'
 include ':core:js'
