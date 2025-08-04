@@ -10,6 +10,8 @@ dependencies {
   testImplementation scalaBackend.testFramework(ScalaTest        )
   testImplementation scalaBackend.testFramework(Specs2           )
   testImplementation scalaBackend.testFramework(UTest            )
+  // TODO WeaverTest does not support Scala Native 0.5...
+  // testImplementation scalaBackend.testFramework(WeaverTest       )
   testImplementation scalaBackend.testFramework(ZioTest          )
 
   // dependencies plugin adds automatically

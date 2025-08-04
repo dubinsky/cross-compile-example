@@ -10,6 +10,8 @@ dependencies {
   testImplementation scalaBackend.testFramework(ScalaTest )
   testImplementation scalaBackend.testFramework(Specs2    )
   testImplementation scalaBackend.testFramework(UTest     )
+  // TODO on Scala.js, Weaver - or its out-of-whack dependencies - causes link errors:
+  // testImplementation scalaBackend.testFramework(WeaverTest)
   testImplementation scalaBackend.testFramework(ZioTest   )
 
   // dependencies plugin adds automatically
