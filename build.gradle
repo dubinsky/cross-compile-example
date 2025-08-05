@@ -21,3 +21,6 @@ tasks.named("dependencyUpdates").configure {
     isNonStable(it.candidate.version)
   }
 }
+
+gradle.startParameter.continueOnFailure = true
+

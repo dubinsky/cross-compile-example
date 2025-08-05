@@ -1,7 +1,7 @@
-package example
-
-// TODO on Scala.js, Weaver - or its out-of-whack dependencies - causes link errors:
-
+//package example
+//
+//import weaver.SimpleIOSuite
+//
 //import weaver.SimpleIOSuite
 //
 //object WeaverScalaJSTest extends SimpleIOSuite {

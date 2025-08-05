@@ -1,6 +1,5 @@
-package example
-
-// TODO WeaverTest does not support Scala Native 0.5...
+//package example
+//
 //import weaver.SimpleIOSuite
 //
 //object WeaverScalaNativeTest extends SimpleIOSuite {

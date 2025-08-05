@@ -5,14 +5,16 @@ import org.podval.tools.test.framework.*
 
 dependencies {
   testImplementation scalaBackend.testFramework(JUnit4ScalaJS, scalaBackend.backendVersion)
-  testImplementation scalaBackend.testFramework(MUnit     )
+  testImplementation scalaBackend.testFramework(AirSpec)
+  testImplementation scalaBackend.testFramework(Hedgehog)
+  testImplementation scalaBackend.testFramework(MUnit)
   testImplementation scalaBackend.testFramework(ScalaCheck)
-  testImplementation scalaBackend.testFramework(ScalaTest )
-  testImplementation scalaBackend.testFramework(Specs2    )
-  testImplementation scalaBackend.testFramework(UTest     )
-  // TODO on Scala.js, Weaver - or its out-of-whack dependencies - causes link errors:
-  // testImplementation scalaBackend.testFramework(WeaverTest)
-  testImplementation scalaBackend.testFramework(ZioTest   )
+//  testImplementation scalaBackend.testFramework(Scalaprops)
+  testImplementation scalaBackend.testFramework(ScalaTest)
+  testImplementation scalaBackend.testFramework(Specs2)
+  testImplementation scalaBackend.testFramework(UTest)
+  //testImplementation scalaBackend.testFramework(WeaverTest)
+  testImplementation scalaBackend.testFramework(ZioTest)
 
   // dependencies plugin adds automatically
   implementation             scalaBackend.scalaDependency ('org.scala-js'  , 'scalajs-library'          , '1.19.0'                   , {it.scala2().jvm()}) // sets scalaBackend.backendVersion
