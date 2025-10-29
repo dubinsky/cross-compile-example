@@ -24,7 +24,7 @@ dependencies {
   }
   scalajs                    scalaBackend.pluginDependency('org.scala-js'  , 'scalajs-linker'           , scalaBackend.backendVersion, {it.scala2()})
   scalajs                    scalaBackend.pluginDependency('org.scala-js'  , 'scalajs-sbt-test-adapter' , scalaBackend.backendVersion, {it.scala2()})
-  scalajs                    scalaBackend.pluginDependency('org.scala-js'  , 'scalajs-env-jsdom-nodejs' , '1.1.0'                    , {it.scala2()})
+  scalajs                    scalaBackend.pluginDependency('org.scala-js'  , 'scalajs-env-jsdom-nodejs' , '1.1.1'                    , {it.scala2()})
   if (!scalaBackend.scala3) {
     scalaCompilerPlugins     scalaBackend.scalaDependency ('org.scala-js'  , 'scalajs-compiler'         , scalaBackend.backendVersion, {it.scala2().scalaCompilerPlugin()})
   }

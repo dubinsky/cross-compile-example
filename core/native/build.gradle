@@ -21,9 +21,9 @@ dependencies {
 
   // dependencies plugin adds automatically
   if (scalaBackend.scala3) {
-    implementation           scalaBackend.scalaDependency ('org.scala-native', 'scala3lib'     , "${scalaBackend.scalaVersion}+0.5.8", {it.scala3()}) // sets scalaBackend.backendVersion
+    implementation           scalaBackend.scalaDependency ('org.scala-native', 'scala3lib'     , "${scalaBackend.scalaVersion}+0.5.9", {it.scala3()}) // sets scalaBackend.backendVersion
   } else {
-    implementation           scalaBackend.scalaDependency ('org.scala-native', 'scalalib'      , "${scalaBackend.scalaVersion}+0.5.8", {it.scala2()}) // sets scalaBackend.backendVersion
+    implementation           scalaBackend.scalaDependency ('org.scala-native', 'scalalib'      , "${scalaBackend.scalaVersion}+0.5.9", {it.scala2()}) // sets scalaBackend.backendVersion
   }
   implementation             scalaBackend.scalaDependency ('org.scala-native', 'nativelib'     , scalaBackend.backendVersion)
   implementation             scalaBackend.scalaDependency ('org.scala-native', 'clib'          , scalaBackend.backendVersion)
