@@ -28,3 +28,9 @@ run {
 //  jsEnv = "Playwright"
 //  browserName = "chrome"
 }
+
+//tasks.withType(ScalaCompile).configureEach {
+//  scalaCompileOptions.with {
+//    additionalParameters = ['-release:17']
+//  }
+//}

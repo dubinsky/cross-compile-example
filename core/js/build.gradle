@@ -17,7 +17,7 @@ dependencies {
   testImplementation scalaBackend.testFramework(ZioTest)
 
   // dependencies plugin adds automatically
-  implementation             scalaBackend.scalaDependency ('org.scala-js'  , 'scalajs-library'          , '1.20.1'                   , {it.scala2().jvm()}) // sets scalaBackend.backendVersion
+  implementation             scalaBackend.scalaDependency ('org.scala-js'  , 'scalajs-library'          , '1.20.2'                   , {it.scala2().jvm()}) // sets scalaBackend.backendVersion
   implementation             scalaBackend.scalaDependency ('org.scala-js'  , 'scalajs-dom'              , '2.8.1')
   if (scalaBackend.scala3) {
     implementation           scalaBackend.scalaDependency ('org.scala-lang', 'scala3-library'           , scalaBackend.scalaVersion  , {it.scala3()})
@@ -45,3 +45,9 @@ link {
     }
   }
 }
+
+//tasks.withType(ScalaCompile).configureEach {
+//  scalaCompileOptions.with {
+//    additionalParameters = ['-release:17']
+//  }
+//}

@@ -5,7 +5,7 @@ pluginManagement {
     gradlePluginPortal()
   }
   plugins {
-    id 'org.podval.tools.scalajs' version '0.9.14'
+    id 'org.podval.tools.scalajs' version '0.9.15'
   }
 }
 
@@ -33,4 +33,4 @@ project(':more').name = 'example-more'
 
 include 'aggregate'
 
-//includeBuild '/home/dub/Projects/scalajs/scalajs-gradle'
+//includeBuild '/home/dub/Podval/scalajs/scalajs-gradle'
