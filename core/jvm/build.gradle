@@ -28,8 +28,5 @@ run {
   mainClass = 'example.Main'
 }
 
-//tasks.withType(ScalaCompile).configureEach {
-//  scalaCompileOptions.with {
-//    additionalParameters = ['-release:17']
-//  }
-//}
+tasks.withType(ScalaCompile).configureEach {scalaCompileOptions.additionalParameters = ['-release:17'] }
+
