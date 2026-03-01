@@ -1,6 +1,7 @@
 // plugin does this automatically
 scala.scalaVersion = scalaVersion
 
+import org.podval.tools.scalanative.JUnit4ScalaNative
 import org.podval.tools.test.framework.*
 
 dependencies {
