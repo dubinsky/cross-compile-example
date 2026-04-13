@@ -16,15 +16,14 @@ dependencies {
   testImplementation scalaBackend.testFramework(ScalaTest)
   testImplementation scalaBackend.testFramework(Specs2)
   testImplementation scalaBackend.testFramework(UTest)
-  // Note: WeaverTest does not support Scala Native 0.5...
-  // testImplementation scalaBackend.testFramework(WeaverTest)
+  testImplementation scalaBackend.testFramework(WeaverTest)
   testImplementation scalaBackend.testFramework(ZioTest)
 
   // dependencies plugin adds automatically
   if (scalaBackend.scala3) {
-    implementation           scalaBackend.scalaDependency ('org.scala-native', 'scala3lib'     , "${scalaBackend.scalaVersion}+0.5.10", {it.scala3()}) // sets scalaBackend.backendVersion
+    implementation           scalaBackend.scalaDependency ('org.scala-native', 'scala3lib'     , "${scalaBackend.scalaVersion}+0.5.11", {it.scala3()}) // sets scalaBackend.backendVersion
   } else {
-    implementation           scalaBackend.scalaDependency ('org.scala-native', 'scalalib'      , "${scalaBackend.scalaVersion}+0.5.10", {it.scala2()}) // sets scalaBackend.backendVersion
+    implementation           scalaBackend.scalaDependency ('org.scala-native', 'scalalib'      , "${scalaBackend.scalaVersion}+0.5.11", {it.scala2()}) // sets scalaBackend.backendVersion
   }
   implementation             scalaBackend.scalaDependency ('org.scala-native', 'nativelib'     , scalaBackend.backendVersion)
   implementation             scalaBackend.scalaDependency ('org.scala-native', 'clib'          , scalaBackend.backendVersion)
