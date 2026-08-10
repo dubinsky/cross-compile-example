@@ -9,6 +9,11 @@ pluginManagement {
   }
 }
 
+plugins {
+  // Enables automatic provisioning of missing JVM toolchains.
+  id 'org.gradle.toolchains.foojay-resolver-convention' version '1.0.0'
+}
+
 dependencyResolutionManagement {
   repositories {
     mavenLocal()
