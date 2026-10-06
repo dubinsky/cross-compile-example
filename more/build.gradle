@@ -1,5 +1,5 @@
 plugins {
-  id 'org.podval.tools.scalajs'
+  id 'org.podval.tools.scala'
 }
 
 scala.scalaVersion = scalaVersion

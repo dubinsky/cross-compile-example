@@ -5,11 +5,10 @@ pluginManagement {
     gradlePluginPortal()
   }
   plugins {
-    id 'org.podval.tools.scalajs' version '1.0.5'
+    id 'org.podval.tools.scala' version '2.1.0'
   }
   // String path: a File would call Settings.includeBuild (not a plugin build).
-  final String conventionsDir =
-    providers.gradleProperty('podvalGradleDir').getOrElse('../podval-gradle')
+  final String conventionsDir = providers.gradleProperty('podvalGradleDir').getOrElse('../podval-gradle')
   if (file(conventionsDir).isDirectory() && file("${conventionsDir}/settings.gradle").isFile()) {
     includeBuild conventionsDir
   }
@@ -43,4 +42,4 @@ project(':more').name = 'example-more'
 
 include 'aggregate'
 
-includeBuild '/home/dub/Podval/scalajs-gradle'
+//includeBuild '/home/dub/Podval/scalajs-gradle'
