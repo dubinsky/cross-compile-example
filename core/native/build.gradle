@@ -1,6 +1,3 @@
-// plugin does this automatically
-scala.scalaVersion = scalaVersion
-
 import org.podval.tools.scalanative.JUnit4ScalaNative
 import org.podval.tools.test.framework.*
 
@@ -12,40 +9,15 @@ dependencies {
   testImplementation scalaBackend.testFramework(Hedgehog)
   testImplementation scalaBackend.testFramework(MUnit)
   testImplementation scalaBackend.testFramework(ScalaCheck)
-//  testImplementation scalaBackend.testFramework(Scalaprops)
   testImplementation scalaBackend.testFramework(ScalaTest)
   testImplementation scalaBackend.testFramework(Specs2)
   testImplementation scalaBackend.testFramework(UTest)
   testImplementation scalaBackend.testFramework(WeaverTest)
   testImplementation scalaBackend.testFramework(ZioTest)
-
-  // dependencies plugin adds automatically
-  if (scalaBackend.scala3) {
-    implementation           scalaBackend.scalaDependency ('org.scala-native', 'scala3lib'     , "${scalaBackend.scalaVersion}+0.5.12", {it.scala3()}) // sets scalaBackend.backendVersion
-  } else {
-    implementation           scalaBackend.scalaDependency ('org.scala-native', 'scalalib'      , "${scalaBackend.scalaVersion}+0.5.12", {it.scala2()}) // sets scalaBackend.backendVersion
-  }
-  implementation             scalaBackend.scalaDependency ('org.scala-native', 'nativelib'     , scalaBackend.backendVersion)
-  implementation             scalaBackend.scalaDependency ('org.scala-native', 'clib'          , scalaBackend.backendVersion)
-  implementation             scalaBackend.scalaDependency ('org.scala-native', 'posixlib'      , scalaBackend.backendVersion)
-  implementation             scalaBackend.scalaDependency ('org.scala-native', 'javalib'       , scalaBackend.backendVersion)
-  implementation             scalaBackend.scalaDependency ('org.scala-native', 'windowslib'    , scalaBackend.backendVersion)
-  implementation             scalaBackend.scalaDependency ('org.scala-native', 'auxlib'        , scalaBackend.backendVersion)
-
-  scalanative                scalaBackend.pluginDependency('org.scala-native', 'tools'         , scalaBackend.backendVersion)
-  scalanative                scalaBackend.pluginDependency('org.scala-native', 'test-runner'   , scalaBackend.backendVersion)
-
-  scalaCompilerPlugins       scalaBackend.scalaDependency ('org.scala-native', 'nscplugin'     , scalaBackend.backendVersion, {it.scalaCompilerPlugin()})
-
-  if (scalaBackend.nonJvmJUnit4present) {
-    testScalaCompilerPlugins scalaBackend.scalaDependency ('org.scala-native', 'junit-plugin'  , scalaBackend.backendVersion, {it.scalaCompilerPlugin()})
-  }
-
-  testRuntimeOnly            scalaBackend.scalaDependency ('org.scala-native', 'test-interface', scalaBackend.backendVersion)
 }
 
 link {
   mainClass = 'example.Main'
 }
 
-tasks.withType(ScalaCompile).configureEach {scalaCompileOptions.additionalParameters = ['-release:17'] }
+tasks.withType(ScalaCompile).configureEach { scalaCompileOptions.additionalParameters = ['-release:17'] }

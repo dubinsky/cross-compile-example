@@ -6,6 +6,7 @@ pluginManagement {
   }
   plugins {
     id 'org.podval.tools.scala' version '2.1.0'
+    id 'org.podval.tools.scala.settings' version '2.1.0'
   }
   // String path: a File would call Settings.includeBuild (not a plugin build).
   final String conventionsDir = providers.gradleProperty('podvalGradleDir').getOrElse('../podval-gradle')
@@ -15,6 +16,7 @@ pluginManagement {
 }
 
 plugins {
+  id 'org.podval.tools.scala.settings'
   id 'org.podval.conventions.settings' version '0.1.0'
 }
 
@@ -28,18 +30,15 @@ dependencyResolutionManagement {
 rootProject.name = 'crosscompile'
 
 include 'core'
-include ':core:shared'
-include ':core:js-native'
-include ':core:jvm'
-project(':core:jvm').name = 'example-core-jvm'
-include ':core:js'
-project(':core:js').name = 'example-core-js'
-include ':core:native'
-project(':core:native').name = 'example-core-native'
-
 include 'more'
-project(':more').name = 'example-more'
-
 include 'aggregate'
+
+// Directory names select the backend. Project names can still be changed afterwards.
+scalaBackend.includeBackendProjects()
+
+project(':core:jvm').name = 'example-core-jvm'
+project(':core:js').name = 'example-core-js'
+project(':core:native').name = 'example-core-native'
+project(':more').name = 'example-more'
 
 //includeBuild '/home/dub/Podval/scalajs-gradle'

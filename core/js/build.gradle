@@ -1,44 +1,24 @@
-// plugin does this automatically
-scala.scalaVersion = scalaVersion
-
 import org.podval.tools.scalajs.JUnit4ScalaJS
 import org.podval.tools.test.framework.*
 
 dependencies {
-  testImplementation scalaBackend.testFramework(JUnit4ScalaJS, scalaBackend.backendVersion)
+  testImplementation scalaBackend.testFramework(JUnit4ScalaJS)
   testImplementation scalaBackend.testFramework(AirSpec)
   testImplementation scalaBackend.testFramework(Hedgehog)
   testImplementation scalaBackend.testFramework(MUnit)
   testImplementation scalaBackend.testFramework(ScalaCheck)
-//  testImplementation scalaBackend.testFramework(Scalaprops)
   testImplementation scalaBackend.testFramework(ScalaTest)
   testImplementation scalaBackend.testFramework(Specs2)
   testImplementation scalaBackend.testFramework(UTest)
   testImplementation scalaBackend.testFramework(WeaverTest)
   testImplementation scalaBackend.testFramework(ZioTest)
-
-  // dependencies plugin adds automatically
-  implementation             scalaBackend.scalaDependency ('org.scala-js'  , 'scalajs-library'          , '1.22.0'                   , {it.scala2().jvm()}) // sets scalaBackend.backendVersion
-  implementation             scalaBackend.scalaDependency ('org.scala-js'  , 'scalajs-dom'              , '2.8.1')
-  if (scalaBackend.scala3) {
-    implementation           scalaBackend.scalaDependency ('org.scala-lang', 'scala3-library'           , scalaBackend.scalaVersion  , {it.scala3()})
-  }
-  scalajs                    scalaBackend.pluginDependency('org.scala-js'  , 'scalajs-linker'           , scalaBackend.backendVersion, {it.scala2()})
-  scalajs                    scalaBackend.pluginDependency('org.scala-js'  , 'scalajs-sbt-test-adapter' , scalaBackend.backendVersion, {it.scala2()})
-  scalajs                    scalaBackend.pluginDependency('org.scala-js'  , 'scalajs-env-jsdom-nodejs' , '1.1.1'                    , {it.scala2()})
-  if (!scalaBackend.scala3) {
-    scalaCompilerPlugins     scalaBackend.scalaDependency ('org.scala-js'  , 'scalajs-compiler'         , scalaBackend.backendVersion, {it.scala2().scalaCompilerPlugin()})
-  }
-  if (!scalaBackend.scala3 && scalaBackend.nonJvmJUnit4present) {
-    testScalaCompilerPlugins scalaBackend.scalaDependency ('org.scala-js'  , 'scalajs-junit-test-plugin', scalaBackend.backendVersion, {it.scala2().scalaCompilerPlugin()})
-  }
-  testRuntimeOnly            scalaBackend.scalaDependency ('org.scala-js'  , 'scalajs-test-bridge'      , scalaBackend.backendVersion, {it.scala2().jvm()})
 }
 
 link {
+  // WebAssembly requires ES2022, ES modules, and FewestModules (the default split style).
   useWebAssembly = true
   moduleKind = 'ESModule'
-  esVersion = '2018'
+  esVersion = '2022'
   moduleInitializers {
     main {
       className = 'example.Main'
@@ -47,4 +27,4 @@ link {
   }
 }
 
-tasks.withType(ScalaCompile).configureEach {scalaCompileOptions.additionalParameters = ['-release:17'] }
+tasks.withType(ScalaCompile).configureEach { scalaCompileOptions.additionalParameters = ['-release:17'] }

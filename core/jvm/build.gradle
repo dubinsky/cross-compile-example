@@ -2,14 +2,11 @@ plugins {
   id 'application'
 }
 
-// plugin does this automatically
-scala.scalaVersion = scalaVersion
-
 import org.podval.tools.jvm.JUnit4Jvm
 import org.podval.tools.test.framework.*
 
 dependencies {
-  testImplementation scalaBackend.testFramework(JUnit4Jvm, '0.13.3')
+  testImplementation scalaBackend.testFramework(JUnit4Jvm)
   testImplementation scalaBackend.testFramework(AirSpec)
   testImplementation scalaBackend.testFramework(Hedgehog)
   testImplementation scalaBackend.testFramework(MUnit)
@@ -20,14 +17,10 @@ dependencies {
   testImplementation scalaBackend.testFramework(UTest)
   testImplementation scalaBackend.testFramework(WeaverTest)
   testImplementation scalaBackend.testFramework(ZioTest)
-
-  // plugin does this automatically
-  testRuntimeOnly 'org.scala-sbt:test-interface:1.0'
 }
 
 run {
   mainClass = 'example.Main'
 }
 
-tasks.withType(ScalaCompile).configureEach {scalaCompileOptions.additionalParameters = ['-release:17'] }
-
+tasks.withType(ScalaCompile).configureEach { scalaCompileOptions.additionalParameters = ['-release:17'] }
