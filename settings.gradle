@@ -5,8 +5,8 @@ pluginManagement {
     gradlePluginPortal()
   }
   plugins {
-    id 'org.podval.tools.scala' version '2.1.0'
-    id 'org.podval.tools.scala.settings' version '2.1.0'
+    id 'org.podval.tools.scala' version '2.2.0'
+    id 'org.podval.tools.scala.settings' version '2.2.0'
   }
   // String path: a File would call Settings.includeBuild (not a plugin build).
   final String conventionsDir = providers.gradleProperty('podvalGradleDir').getOrElse('../podval-gradle')
