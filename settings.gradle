@@ -13,11 +13,15 @@ pluginManagement {
   if (file(conventionsDir).isDirectory() && file("${conventionsDir}/settings.gradle").isFile()) {
     includeBuild conventionsDir
   }
+  final String scalajsGradleDir = providers.gradleProperty('scalajsGradleDir').getOrElse('../scalajs-gradle')
+  if (file(scalajsGradleDir).isDirectory() && file("${scalajsGradleDir}/settings.gradle").isFile()) {
+    includeBuild scalajsGradleDir
+  }
 }
 
 plugins {
   id 'org.podval.tools.scala.settings'
-  id 'org.podval.conventions.settings' version '0.2.0'
+  id 'org.podval.conventions.settings' version '0.3.0'
 }
 
 dependencyResolutionManagement {
