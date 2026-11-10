@@ -1,7 +1,7 @@
 package example
 
-import hedgehog._
-import hedgehog.runner._
+import hedgehog.*
+import hedgehog.runner.*
 
 object HedgehogScalaNativeTest extends Properties {
   def tests: List[Test] =

@@ -1,6 +1,6 @@
 package example
 
-import zio.test._
+import zio.test.*
 
 object ZIOTestScalaJSTest extends ZIOSpecDefault {
   override def spec: Spec[TestEnvironment, Any] = suite("ZIOTestTest")(

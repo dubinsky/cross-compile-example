@@ -1,6 +1,6 @@
 package example
 
-import scalaprops._
+import scalaprops.*
 
 object ScalapropsTest extends Scalaprops {
   property("revAndRevIsOriginal") = Property.forAll { (xs: List[Int]) => xs.reverse.reverse == xs }

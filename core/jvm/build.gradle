@@ -1,9 +1,12 @@
 plugins {
   id 'application'
+  id 'org.podval.conventions'
 }
 
 import org.podval.tools.jvm.JUnit4Jvm
 import org.podval.tools.test.framework.*
+
+podval.javaOutputVersion = 17
 
 dependencies {
   testImplementation scalaBackend.testFramework(JUnit4Jvm)
@@ -22,5 +25,3 @@ dependencies {
 run {
   mainClass = 'example.Main'
 }
-
-tasks.withType(ScalaCompile).configureEach { scalaCompileOptions.additionalParameters = ['-release:17'] }

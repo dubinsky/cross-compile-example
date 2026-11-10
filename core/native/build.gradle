@@ -1,6 +1,9 @@
 import org.podval.tools.scalanative.JUnit4ScalaNative
 import org.podval.tools.test.framework.*
 
+apply plugin: 'org.podval.conventions'
+podval.javaOutputVersion = 17
+
 dependencies {
   testImplementation scalaBackend.testFramework(JUnit4ScalaNative)
   if (scalaBackend.scala3) {
@@ -20,5 +23,3 @@ dependencies {
 link {
   mainClass = 'example.Main'
 }
-
-tasks.withType(ScalaCompile).configureEach { scalaCompileOptions.additionalParameters = ['-release:17'] }

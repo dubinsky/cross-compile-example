@@ -1,6 +1,9 @@
 import org.podval.tools.scalajs.JUnit4ScalaJS
 import org.podval.tools.test.framework.*
 
+apply plugin: 'org.podval.conventions'
+podval.javaOutputVersion = 17
+
 dependencies {
   testImplementation scalaBackend.testFramework(JUnit4ScalaJS)
   testImplementation scalaBackend.testFramework(AirSpec)
@@ -27,5 +30,3 @@ link {
     }
   }
 }
-
-tasks.withType(ScalaCompile).configureEach { scalaCompileOptions.additionalParameters = ['-release:17'] }

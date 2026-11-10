@@ -1,6 +1,6 @@
 package example
 
-import utest._
+import utest.*
 
 object UTestScalaJSTest extends TestSuite {
   val tests: Tests = Tests {

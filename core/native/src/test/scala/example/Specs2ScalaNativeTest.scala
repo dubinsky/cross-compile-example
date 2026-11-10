@@ -1,6 +1,6 @@
 package example
 
-import org.specs2._
+import org.specs2.*
 import org.specs2.execute.Result
 
 final class Specs2ScalaNativeTest extends Specification {
