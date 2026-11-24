@@ -8,6 +8,9 @@ version = '0.0.1'
 subprojects {
   group = rootProject.group
   version = rootProject.version
+  pluginManager.withPlugin('org.podval.conventions') {
+    podval.javaOutputVersion = 17
+  }
 }
 
 gradle.startParameter.continueOnFailure = true

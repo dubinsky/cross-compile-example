@@ -6,8 +6,6 @@ plugins {
 import org.podval.tools.jvm.JUnit4Jvm
 import org.podval.tools.test.framework.*
 
-podval.javaOutputVersion = 17
-
 dependencies {
   testImplementation scalaBackend.testFramework(JUnit4Jvm)
   testImplementation scalaBackend.testFramework(AirSpec)

@@ -4,7 +4,6 @@ plugins {
 }
 
 scala.scalaVersion = scalaVersion
-podval.javaOutputVersion = 17
 
 dependencies {
   implementation project(':core:example-core-js')
